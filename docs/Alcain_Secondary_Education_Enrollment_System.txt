@@ -1,0 +1,33 @@
+Name of System :
+				Secondary_Education_Enrollment_System(SEES)
+
+DESCRIPTION:	
+			Secondary_Education_Enrollment_System includes computerized   enrollment form,paying miscellaneous fee  which is easy to the user.
+		It is more effecient and lessens the time spent than in manual enrollment processing. The system  can be used by teachers or 
+		other school staff that is needed in enrolling..This system is actually for secondary education schools. 	
+
+
+FEATURES:
+		*Log-in:
+				:can log-in as user or admin
+		*User:
+				:can view his/her student's profile
+				:can edit his/her student's profile
+				:can add student
+				:view , add and edit student's guardian
+				:add , view student's subject schedule
+		
+		*Admin
+			
+				->Student Side				
+					: admin can add and update student
+					: can view all the students
+					: can  add student's guardian information
+				->Teacher Side
+					:view and edit teachers info
+					:add, view teachers schedule
+				
+
+
+
+students, rooms, teachers, subjects, schedules
