@@ -366,6 +366,8 @@
             			echo "<th>Subject</th>";
             			echo "<th>Day</th>";
             			echo "<th>Time</th>";
+            			echo "<th>Edit / Delete</th>";
+            			
             			echo "</tr>";
             		while ($row= $stmt->fetch()){
 
@@ -373,7 +375,9 @@
 		         		echo "<td>".$row[1]."</td>";
 		         		echo "<td>".$row[2]."</td>";
 		         		echo "<td>".$row[3]."</td>";
-		         		echo "<td>".$row[4]."<i class='icon-edit'></i></td>";
+		         		echo "<td>".$row[4]."</td>";
+		         		echo "<td><span class='label label-warning'>Edit</span>   |
+		         		<span class='label label-warning'>Delete</span></td>";
 		         		echo "</tr>";
             		}
             		

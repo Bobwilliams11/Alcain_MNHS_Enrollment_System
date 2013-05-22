@@ -293,75 +293,82 @@
 			
 			   $this->closeConn();
 		 }
-	        
-	/*   function students_delete($id){
-		            $this->openConn();
-		                 
-		                $stmt = $this->dbh->prepare("DELETE FROM Room_Table WHERE student_id = ?");
-		                $stmt->bindParam(1, $id);
-		              	$stmt->execute();
+		
+		function student_view_sched($username){
+				$this->openConn();
+            	
+            		$stmt = $this->dbh->prepare("SELECT * FROM Registered_User WHERE Username = ? ");
+            		$stmt->bindParam(1, $username);
+            		$stmt->execute();
+            		
+            		$row1= $stmt->fetch();
+            		$teacher_id = $row1[1];
+            		
+            		$get_room = $this->dbh->prepare("SELECT * FROM Teachers_Room_Position wHERE teacher_id= ?");
+            		$get_room->bindParam(1, $teacher_id);
+            		$get_room->execute();
+            		
+            		$row2 = $get_room->fetch();
+            		$room_id = $row2[2];
+            		
+            		$show_sched = $this->dbh->prepare("SELECT s.Subject_Name, t.Teacher_Name, st.Day, st.Time
+            					FROM Subject as s, Teachers_Table as t, Subject_of_Teachers as st 
+            					WHERE st.teacher_id = t.teacher_id
+            					AND st.subject_id = s.subject
+            					AND st.room_id = ?");
+            		$show_sched ->bindParam(1, $room_id);
+            		$show_sched->execute();
+            		
+            		while ($row3= $show_sched->fetch()){
 
-		                $stmt = $this->dbh->prepare("DELETE FROM Students_Profile WHERE student_id = ?");
-		                $stmt->bindParam(1, $id);
-		              	$stmt->execute();
-		                 
-
-		             $this->closeConn();
-		            
+            			echo "<tr id >";
+		         		echo "<td>".$row3[0]."</td>";
+		         		echo "<td>".$row3[1]."</td>";
+		         		echo "<td>".$row3[2]."</td>";
+		         		echo "<td>".$row3[3]."<i class='icon-edit'></i></td>";
+		         		echo "</tr>";
+            		}
+            		
+            	$this->closeConn();
 		}
-		/*    
-		function student_search($search_section){
-		     $this->openConn();
-		                 
-		         $stmt = $this->dbh->prepare("SELECT  s.subject_id , tt.Teacher_Name, s.Subject_Name, s.Day, s.Time, s.Section
-			        	FROM Subject AS s, Teachers_Table AS tt
-			        	WHERE tt.teacher_id = s.teacher_id
-			        	AND s.Section =?");
-		             //   $stmt = $this ->dbh->prepare("SELECT DISTINCT");
-		                $stmt->bindParam(1, $search_section);
-		              	$stmt->execute();
-		              	
-		              	$searched = false;
-			         while($row=$stmt->fetch()){
-				                $ctr=0;
-				                while($ctr<2){
-					                  if($row[$ctr] != "" || $row[$ctr] != ""){
-						                  $searched = true;
-					                  }
-					                  $ctr++;
-				                  }
-				                  if($searched){
-				                  	echo "<tr><th colspan='7' class='alert alert-success'>Schedule of Subject</th>
-									</tr>
-									<th>Subject Teacher</th>
-									<th>Subject</th>
-									<th>Day</th>
-									<th>Time</th>
-									<th>Section</th>
-									<th colspan='2'>Action</th>";
-					                echo "<tr id=".$row[0].">";
-									echo "<td> ".$row[1]."</td>";
-									echo "<td>".$row[2]."</td>";
-									echo "<td>".$row[3]."</td>";
-									echo "<td>".$row[4]."</td>";
-									echo "<td>".$row[5]."</td>";
-									echo "<td><a href='#edit_subject_modal' role='button' data-toggle='modal'>
-								   		<button class='btn btn-success' onclick='subject_edit(".$row[0].")'>
-										<i class='icon-pencil icon-white'></i>
-								   		</button></a></td>";
-									echo "</tr>"; 	
-									
-				                  }
-				                  
-			         }
-			         if(!$searched){
-			                     echo"No Matched Found";
-			         }					
-   					
-		    $this->closeConn();
-		            
-		 }*/
-		 
+		
+		function student_view_sched_admin($teacher_name){
+				$this->openConn();
+            	
+            		$stmt = $this->dbh->prepare("SELECT * FROM Registered_User WHERE Username = ? ");
+            		$stmt->bindParam(1, $username);
+            		$stmt->execute();
+            		
+            		$row1= $stmt->fetch();
+            		$teacher_id = $row1[1];
+            		
+            		$get_room = $this->dbh->prepare("SELECT * FROM Teachers_Room_Position wHERE teacher_id= ?");
+            		$get_room->bindParam(1, $teacher_id);
+            		$get_room->execute();
+            		
+            		$row2 = $get_room->fetch();
+            		$room_id = $row2[2];
+            		
+            		$show_sched = $this->dbh->prepare("SELECT s.Subject_Name, t.Teacher_Name, st.Day, st.Time
+            					FROM Subject as s, Teachers_Table as t, Subject_of_Teachers as st 
+            					WHERE st.teacher_id = t.teacher_id
+            					AND st.subject_id = s.subject
+            					AND st.room_id = ?");
+            		$show_sched ->bindParam(1, $room_id);
+            		$show_sched->execute();
+            		
+            		while ($row3= $show_sched->fetch()){
+
+            			echo "<tr id >";
+		         		echo "<td>".$row3[0]."</td>";
+		         		echo "<td>".$row3[1]."</td>";
+		         		echo "<td>".$row3[2]."</td>";
+		         		echo "<td>".$row3[3]."<i class='icon-edit'></i></td>";
+		         		echo "</tr>";
+            		}
+            		
+            	$this->closeConn();
+		}
 }
 
 

@@ -231,7 +231,10 @@ select{
 }
 
 /*form*/
-
+#register_form, #room_form, #subject_form{
+	
+	display:none;
+}
 #add_teacher_form{
 	display:none;
 	border-radius:2px;
@@ -297,7 +300,7 @@ label {
 
 /*buttons*/
 
-#add_student_btn, #register_btn{
+ #register_btn, #room_btn, #subject_btn{
 	 border-top: 1px solid #09e32a;
    background: #d7de0b;
    background: -webkit-gradient(linear, left top, left bottom, from(green), to(yellow));
@@ -320,10 +323,11 @@ label {
    vertical-align: middle;
    cursor:pointer;
 }
-#register_btn{
+#buttons{
     float:left;
     margin:20px auto;
 }
+
 #student_edit_btn{
 	width:10px;
 }/*, #student_delete_btn,#search_btn{
@@ -357,12 +361,18 @@ label {
 
 
 /*tables*/
+#user_set{
+	width:500px;
+	float:right;
+	margin-right:300px;
+	margin-top:50px;
+}
 #teachers_table{
 	margin:auto;
 	padding:auto;
 	width:750px;
 }
-#view_students_table,#guardian_add_table,  #user_table{
+#view_students_table,#guardian_add_table{
 	cursor:pointer;
 	color: black;
 	border:2px solid pink;

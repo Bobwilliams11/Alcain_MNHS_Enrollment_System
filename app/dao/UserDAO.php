@@ -44,31 +44,67 @@
 		      $this->closeConn();
 		               
 		}
-		function register( $teacher_id, $username, $password, $confirm_pass){
+		function register( $reg_name, $username, $password, $confirm_pass, $reg_as){
 		      $this->openConn();
 		            
-		             $teacher = $this ->dbh->prepare("SELECT * FROM Teachers_Table WHERE teacher_id=?");
-						 $teacher->bindParam(1, $teacher_id);
+		             $teacher = $this ->dbh->prepare("SELECT * FROM Teachers_Table WHERE Teacher_Name =?");
+						 $teacher->bindParam(1, $reg_name);
 		            $teacher->execute();
 						
-						if($row =$teacher->fetch()){
-						    $stmt= $this->dbh->prepare("INSERT INTO Registered_User( teacher_id, Username, Password, Password2) VALUES (?,?,?,?)");
-		            		$stmt->bindParam(1, $teacher_id);
-				            $stmt->bindParam(2, $username);
-						    $stmt->bindParam(3, $password);
-						    $stmt->bindParam(4, $confirm_pass);
-						    $stmt->execute();
-						    $user_id = $this->dbh->lastInsertId();
+						if($row = $teacher->fetch()){
+							
+								$teacher_id = $row[0];	
+								
+								$admin = "Admin";
+								
+								if ($reg_as == $admin){
+								
+									$teacher_check =$this->dbh ->prepare("SELECT * FROM Admin WHERE teacher_id = ?");
+									$teacher_check->bindParam(1, $teacher_id);
+									$teacher_check->execute();
+									
+									if($teacher_check->fetch()){
+										echo "Already an admin";
+									}else{
+										$add_admin = $this->dbh->prepare("INSERT INTO Admin (Admin_Username, Password, Password2, teacher_id)
+											VALUES (?,?,?,?)");
+										$add_admin->bindParam(1, $username);
+										$add_admin->bindParam(2, $password);
+										$add_admin->bindParam(3, $confirm_pass);
+										$add_admin->bindParam(4, $teacher_id);
+										$add_admin->execute();
+										
+										echo "Successfully Registered...";
+									}
+									
+										
+								}
+								else{
+									
+									$teacher_check2 =$this->dbh ->prepare("SELECT * FROM Registered_User WHERE teacher_id = ?");
+									$teacher_check2->bindParam(1, $teacher_id);
+									$teacher_check2->execute();
+									
+									if($teacher_check2->fetch()){
+										echo "Already a User";
+									}else{
+										$stmt= $this->dbh->prepare("INSERT INTO Registered_User( teacher_id, Username, Password, Password2) VALUES (?,?,?,?)");
+								   	 $stmt->bindParam(1, $teacher_id);
+										 $stmt->bindParam(2, $username);
+										 $stmt->bindParam(3, $password);
+										 $stmt->bindParam(4, $confirm_pass);
+										 $stmt->execute();
+										 $user_id = $this->dbh->lastInsertId();
+										echo "Successfully Registered...";
+									}
+									
+								}
+						    
                             
-                            echo "Successfully Registered...";
 						}
-	                    else{
-	                        echo"Teacher_ID not found.."; 
+	               else{
+	                        echo"Teacher  not found.."; 
 						}		  
-		            
-					
-					             
-				
 
 		      $this->closeConn(); 
 		 }
@@ -106,28 +142,29 @@
 				$this->closeConn();
 			
 		}
-       /* function users_view(){
+        function users_view(){
 
 			        $this->openConn();
-			        $stmt = $this->dbh->prepare("SELECT * FROM Teachers_Table");
+			        $stmt = $this->dbh->prepare("SELECT u.user_id, t.Teacher_Name , u.Username 
+			        				FROM Registered_User as u, Teachers_Table as t
+			        				WHERE t.teacher_id = u.teacher_id
+			        				");
 			        $stmt->execute();
 			        
+			        echo "<tr><th class= 'alert alert-warning' colspan='2'>User</th></tr>";
+			        echo "<tr><th>Teacher</th>
+			        		<th>Username</th></tr>";
 			        while($row = $stmt->fetch()){
 				        echo "<tr id=".$row[0].">";
-				    //    echo "<td><img src='css/images/user-icon.png'/></td>";
-				        echo "<td>".$row[0]."</td>";
 				        echo "<td>".$row[1]."</td>";
-				       	echo "<td>".$row[2]."</td>";
-				        
-						echo "<td><button id='user_edit_btn' onclick='user_edit(".$row[0].")'>Edit</button></td>";
-                  		echo "<td><button id='user_delete_btn' onclick='user_delete(".$row[0].")'>Delete</button></td>";
+				        echo "<td>".$row[2]."</td>";
 				        echo "</tr>"; 
 		         }
 		        
            		$this->closeConn();
 		 
 	        }
-	          */
+	          
 }
 /* function user_delete($id){
                   $this->openConn();

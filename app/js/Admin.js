@@ -1,5 +1,4 @@
 $(function(){
-//alert('dasdas');
 	//for datepicker
 /*	$( ".bday" ).datepicker({
 		   changeMonth: true,
@@ -18,8 +17,12 @@ $(function(){
 		 	
 		 	$("input[name ='age']").val(age);
 	});
+	//student_ edit_datepicker
+	$('#dp1').datepicker({
+	  format: 'yyyy-mm-dd'
+	});
 	
-	$(".datepicker").datepicker();
+	
 	//viewing all students
 	$.ajax({
 		type:"GET",
@@ -161,7 +164,163 @@ $(function(){
 			});
 		});
 		
-
+		//register
+		$("#register_btn").click(function(){
+			$("#register_form").dialog( 'open' );
+		});
+		$("#register_form").dialog({
+			autoOpen:false,
+			width:500,
+			show:"blind",
+			hide:"blind",
+			modal:true,
+			buttons:{
+				"Register":function(){
+						var registerObj ={
+							 	"reg_name":$("input[name='reg_name']").val(),
+								 "username":$("input[name='username']").val(),
+								 "password":$("input[name='password']").val(),
+								 "confirm_pass":$("input[name='confirm_pass']").val(),
+								 "reg_as":$("select[name='reg_as']").val()
+						};
+					
+						$.ajax({
+							type:"POST",
+							url:"register.php",
+							data:registerObj,
+							success:function(data){
+								alert(JSON.stringify(data));
+							},
+							error:function(data){
+								console.log(JSON.stringify(data));
+							}
+						});
+				},
+				Cancel:function(){
+					$( this ).dialog( 'close' );
+				}
+			}
+		});
+		
+		
+	//displaying users
+	$("#view_user_btn").click(function(){
+		
+		$.ajax({
+			type:"POST",
+			url:"user_view.php",
+			success:function(data){
+				$("#view_table").html(data);
+			},
+			error:function(data){
+				console.log(JSON.stringify(data));
+			}
+		});
+	});
+		
+	//displaying room
+	$("#view_room_btn").click(function(){
+			
+		$.ajax({
+			type:"POST",
+			url:"room_view.php",
+			success:function(data){
+				$("#view_table").html(data);
+			},
+			error:function(data){
+				console.log(JSON.stringify(data));
+			}
+		});
+		});
+	//displaying subject
+	$("#view_subject_btn").click(function(){
+		$.ajax({
+			type:"POST",
+			url:"subject_view.php",
+			success:function(data){
+				$("#view_table").html(data);
+			},
+			error:function(data){
+				console.log(JSON.stringify(data));
+			}
+		});
+	});
+		//adding room
+		$("#room_btn").click(function(){
+			$("#room_form").dialog( 'open' );
+		});
+		$("#room_form").dialog({
+			autoOpen:false,
+			width:450,
+			show:"blind",
+			hide:"blind",
+			modal:true,
+			buttons:{
+				"Add ":function(){
+						var roomObj ={
+								 "room":$("input[name='room']").val(),
+								 "construct_company":$("input[name ='construct_company']").val(),
+								 "constructed":$("input[name ='constructed']").val(),
+								 "cost":$("input[name ='cost']").val()
+						};
+					
+					if (roomObj.room == "" || roomObj.construct_company == "" || roomObj.constructed == "" || roomObj.cost == ""){
+						alert("Fill Up all Fields");
+					}else{
+						$.ajax({
+							type:"POST",
+							url:"add_room.php",
+							data:roomObj,
+							success:function(data){
+								alert(JSON.stringify(data));
+							},
+							error:function(data){
+								console.log(JSON.stringify(data));
+							}
+						});
+					}
+				},
+				Cancel:function(){
+					$( this ).dialog( 'close' );
+				}
+			}
+		});
+	
+		//add subject]
+		$("#subject_btn").click(function(){
+			$("#subject_form").dialog( "open" );
+		});
+		$("#subject_form").dialog({
+			autoOpen:false,
+			width:450,
+			show:"blind",
+			hide:"blind",
+			modal:true,
+			buttons:{
+				"Add ":function(){
+						var roomObj ={
+						
+								 "subject":$("input[name='subject']").val()
+						};
+					
+						$.ajax({
+							type:"POST",
+							url:"add_subject.php",
+							data:roomObj,
+							success:function(data){
+								alert(JSON.stringify(data));
+							},
+							error:function(data){
+								console.log(JSON.stringify(data));
+							}
+						});
+				},
+				Cancel:function(){
+					$( this ).dialog( 'close' );
+				}
+			}
+		});
+		
 });//end of document on load
 
 function student_view_data(student_id){

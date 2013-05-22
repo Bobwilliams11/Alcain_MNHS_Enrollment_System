@@ -14,15 +14,10 @@
 	
 			if($val_admin){
 			
-				$SecurityPass = $_POST['SecurityPass'];	
-			
-				if($action -> CheckSecurityPass($SecurityPass)){
+				
 					header('Location: Admin.php');
 					$_SESSION['admin']=$_POST['username'];	
-				}else{
-					$errMsg = "<p class='alert alert-warning'Incorrect Security Password</p>";
-					
-				}
+			
 
 			}else{		
 				$username = $_POST['username'];
@@ -32,7 +27,7 @@
 					$_SESSION['username']=$_POST['username'];
 					header('Location: home_index.php');
 				}else{
-					$errMsg = "<p class='alert alert-warning'>Unknown User ".$username."</p>";			
+					$errMsg = "<p class='alert alert-warning'>Unknown User  or Password</p>";			
 				}
 			
 			}

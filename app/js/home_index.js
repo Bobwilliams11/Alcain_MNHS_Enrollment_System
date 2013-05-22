@@ -153,7 +153,17 @@ $(function(){
 		});
 	});
 	
-	
+	$.ajax({
+		type:"POST",
+		url:"student_view_sched.php",
+		success:function(data){
+			$("#student_sched_table").append(data);
+		
+		},
+		alert:function(data){
+			console.log(JSON.stringify(data));
+		}
+	});
 	
 	
 	
@@ -264,8 +274,9 @@ function guardian_add(){
 								data:addguardianObj,
 								url:"guardian_add.php",
 								success: function(data){
-									alert(JSON.stringify(data));
+									
 									$("#parent_info").append(data);
+									
 								},
 								error: function(data){
 									

@@ -1,6 +1,7 @@
 $(function(){
 
 	//getting the subject in database...
+	
 		$.ajax({
 			type:"GET",
 			url:"get_subject.php",

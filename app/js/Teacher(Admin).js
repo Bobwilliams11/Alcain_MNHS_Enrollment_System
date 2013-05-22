@@ -123,6 +123,7 @@ $(document).ready(function(){
 				}
 			}
 		});	
+		
 	//for register_form dialog
 	$("#add_user_btn").click(function(){
 		

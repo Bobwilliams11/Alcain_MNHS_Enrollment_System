@@ -24,10 +24,11 @@
 	</head>
 	<body>
 	<p id="user">
+		User:<strong>Admin <?php
+				echo $admin;	
+			?></strong>
          <?php
-	 
-	   
-	    echo"<br/>Date and Time: &nbsp";
+		    echo"<br/>Date and Time: &nbsp";
 	        date_default_timezone_set('Asia/Manila');echo date('m-d-Y h:i a', time());
 	    ?>
 	  </p>
@@ -152,7 +153,6 @@
 						 <li id='student_info_li' class='active'><a href="#student_info" data-toggle="tab">Student Info</a></li>
 						 <li id='parent_info_li'><a href="#parent_info" data-toggle="tab">Guardian Info</a></li>
 						 <li id='student_sched_li'><a href="#student_schedule" data-toggle="tab">Schedule</a></li>
-						 <li id='student_progress_li'><a href="#student_progress" data-toggle="tab">Progress</a></li>
 					 </ul>
 					 <div class='tab-content'>
 						 <div id='student_info' class="active tab-pane">
@@ -172,12 +172,9 @@
 						 			<th>Time</th>
 						 		</tr>
 						 	</table>
-							<button class="btn btn-primary" data-toggle="modal" href="#add_student_subject_modal">Add Subject</button>
-						 	
+							
 						 </div><!---STUDENT SCHEDULE--->
-						 <div id='student_progress' class="tab-pane">
-						 	
-						 </div><!---STUDENT_pROGRESS--->
+						 
 						 <input type="hidden" name ="student_id_for_view"/>
 					</div><!--tab-content-->
 				<input type='hidden' name ='student_id2'>
@@ -204,7 +201,7 @@
 									<label for="edit_lastname">Lastname</label>
 									<input type="text"  name="edit_lastname" title="Must be letter A-Z."><br/>
 									<label for="edit_birthday">Birthday</label>
-									<input type="text"  class="datepicker"><br/>
+									<input type="text" id="dp1">
 									<label for="edit_age">Age</label>
 									<input type="text" name="edit_age"  title="Must be number."><br/>
 									<label for="edit_gender">Gender</label>
@@ -366,7 +363,7 @@
 								<ul class="nav nav-tabs" id='teacher_tabs'>
 								 
 								 <li ><a href="#teacher_basic_info" data-toggle="tab">Basic Information</a></li>
-								 <li id="teacher_sched_li" ><a href="#teacher_sched" data-toggle="tab">Class Schedule</a></li>
+								 <li id="teacher_sched_li" ><a href="#teacher_sched" data-toggle="tab">Teacher Schedule</a></li>
 							 </ul>
 							 <div class='tab-content'>
 							 	<div id="teacher_basic_info" class="active tab-pane">
@@ -467,6 +464,65 @@
 						</div><!--add_teacher_sched_modal--->
 						
 			</div><!---teacher_div---------->
+			<div id="register">
+			<div id = "buttons">
+				<button id ="register_btn" >Register</button><br/><br/>
+				<button id ="room_btn">Add Room</button><br/><br/>
+				<button id ="subject_btn">Add Subject</button><br/>
+			</div>
+					<form id="register_form" action="register.php" method="POST" >
+						<legend>Register Here</legend>
+						<p class="reg_status"></p>
+						<label for="reg_name">Name </label>
+						<input type="text" name="reg_name" placeholder="Teacher Name" title="Must be letter"><br/>
+						<label for="username">Username </label>
+						<input type="text" name="username" title="Letters ONLY"><br/>
+						<label for="password">Password </label>
+						<input type="password" name="password" title="Can be  letter and number"><br/>
+						<label for="confirm_pass">Confirm- Password </label>
+						<input type="password" name="confirm_pass" title="Can be  letter and number"><br/>
+						<label for ="reg_as">Register as :</label>
+						<select name ="reg_as">
+							<option value ="User">User</option>
+							<option value ="Admin">Admin</option>
+						</select>
+						
+					</form>
+			
+				<form id ="room_form" method="POST" action ="add_room.php">
+					<legend >Add Room</legend>
+					<label for = "room">Room</label>
+					<input type = "text" name ="room" placeholder="Room Name" />
+					<label for = "construct_company">Construction Company</label>
+					<input type = "text" name ="construct_company"  />
+					<label for = "constructed">Date Constructed</label>
+					<input type = "text" name ="constructed"  />
+					<label for = "cost">Cost</label>
+					<input type = "text" name ="cost" />
+				</form>
+				
+				<form id ="subject_form" method="POST" action ="">
+					<legend>Add Subject</legend>
+					<label for = "subject">Subject</label>
+					<input type = "text" name ="subject" placeholder="Subject Name" />
+				</form>
+				
+				
+			<fieldset id ="user_set">
+				<div id = "view_btn">
+					<button class= "btn-danger" id ="view_user_btn">User</button>
+					<button class= "btn-danger" id ="view_room_btn">Room</button>
+					<button class= "btn-danger" id ="view_subject_btn">Subject</button>
+				</div>
+				<table id ="view_table" class= "table table-striped hoover">
+						
+						
+										
+				</table>
+			</fieldset>
+			
+	
+			</div><!----register_div--->
 	</div><!--body_container-->
 		
 		 <div id="logout_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">

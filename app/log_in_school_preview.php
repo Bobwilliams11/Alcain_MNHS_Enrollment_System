@@ -45,15 +45,7 @@
 						</div>
 					</div>
 					
-					<label for = 'login_as'>Login As:</label>		
-					<select class='login_as' onchange = 'classify()'>
-						<option value='Member'>Member/User</option>
-						<option value='Admin'>Administrator</option>
-					</select><br/>
-					<p id="security">
-						<label for='SecurityPass'>SecurityPassword</label><br>
-						<input type='password' id='SecurityPass' name='SecurityPass' /><br/>
-					</p>
+					
 					<input type='submit' value="Sign in" id="log_in_btn" class="btn btn-primary" />	
 				</form>
 				

@@ -155,7 +155,7 @@
 						 </div><!---PARENT_INFO---->
 						 <div id='student_schedule' class="tab-pane">
 						 	
-						 	<table class="table table-bordered table-hoover">
+						 	<table id = "student_sched_table" class="table table-bordered table-hoover">
 						 		<tr>
 						 			<th>Subject</th>
 						 			<th>Subject Teacher</th>
@@ -163,8 +163,6 @@
 						 			<th>Time</th>
 						 		</tr>
 						 	</table>
-							<button class="btn btn-primary" data-toggle="modal" href="#add_student_subject_modal">Add Subject</button>
-						 	
 						 </div><!---STUDENT SCHEDULE--->
 						 <div id='student_progress' class="tab-pane">
 						 	
@@ -194,49 +192,6 @@
 			  </div>
 			</div><!--drop student_modal--->
 			
-			<div id="add_student_subject_modal" class="modal hide fade" tabindex="-1" data-focus-on="input:first" data-backdrop="static">
-			  <div class="modal-header">
-				 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				 <h3>Add Student Sched</h3>
-			  </div>
-			  <div class="modal-body">
-					 <form class="form-horizontal" id="add_subject_form">
-					 				 <div class="control-group">
-										 <label class="control-label" for="subj_teacher">Subject Teacher</label>
-										 <div class="controls">
-											 <p id = "for_subj_teacher" ></p>
-											 <input type = "hidden" name = "teacher_choice" id= "teacher_choice">
-										 </div>
-									 </div>
-									 <div class="control-group">
-									 	<label class="control-label" for="subject">Subject</label>
-										 <div class="controls">
-											 <p id ="for_subject"></p>
-										 </div>
-									 </div>
-									
-									 <div class="control-group">
-										 <label class="control-label" for="day">Day</label>
-										 <div class="controls">
-											 <select name="day" >
-										 	</select>
-										 </div>
-									 </div>
-									 <div class="control-group">
-										 <label class="control-label" for="time">Time</label>
-										 <div class="controls">
-											 <select name="time" >
-											 </select>
-										 </div>
-									 </div>
-
-								 </form>
-			  </div>
-			  <div class="modal-footer">
-				 <button type="button" data-dismiss="modal" class="btn ">Cancel</button>
-				 <button type="button" class="btn btn-primary " id="add_subject_btn">Add</button>
-			  </div>
-			</div><!--add_student_subject_modal--->
 		
 			<div id="guardian_modal" class="modal hide fade" tabindex="-1" data-focus-on="input:first" data-backdrop="static">
 			  <div class="modal-header">
@@ -396,10 +351,10 @@
 						 </ul>
 						 <div class='tab-content'>
 						 	<div id="teacher_basic_info" class="active tab-pane">
-						 		lslkjdjkjk
+						 		
 						 	</div><!--teacher_basic_info-->
 						 	<div id="teacher_sched" class="tab-pane">
-						 		jkljklfdkjl
+						 		
 						 		<table class="table table-hoover">
 						 			<tr>
 						 				<th>Section</th>
