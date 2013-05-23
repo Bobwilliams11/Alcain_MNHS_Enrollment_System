@@ -246,7 +246,7 @@
 		                 
 		           echo "<p class='alert alert-success'>Successfully Edited..</p>";
 		           echo "<labe>Name:</label> <input type='text' value='".$edit_firstname. "' readonly></br>";
-			        echo "<label>Middlename:</label> <input type ='text' valu ='".$edit_middlename."'readonly></br>";
+			        echo "<label>Middlename:</label> <input type ='text' value ='".$edit_middlename."'readonly></br>";
 			        echo "<label>Lastname:</label> <input type ='text' value='".$edit_lastname."' readonly></br>";
 			        echo "<label>Birthday:</label> <input type ='text' value='".$edit_birthday."' readonly></br>";
 			        echo "<label>Age:</label> <input type ='text' value='".$edit_age."' readonly></br>";

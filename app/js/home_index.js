@@ -273,7 +273,6 @@ var saveObj={
 								 "edit_religion":$("input[name='edit_religion']").val(),
 								 "edit_contact":$("input[name='edit_contact']").val()
 							};
-						
 							$.ajax({	
 									type:"POST",
 									url:"student_save.php",
