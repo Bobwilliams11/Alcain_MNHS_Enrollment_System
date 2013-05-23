@@ -246,7 +246,11 @@
 		                 
 		           echo "<p class='alert alert-success'>Successfully Edited..</p>";
 		           echo "<labe>Name:</label> <input type='text' value='".$edit_firstname. "' readonly></br>";
+<<<<<<< HEAD
 			        echo "<label>Middlename:</label> <input type ='text' value ='".$edit_middlename."'readonly></br>";
+=======
+			        echo "<label>Middlename:</label> <input type ='text' valu ='".$edit_middlename."'readonly></br>";
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 			        echo "<label>Lastname:</label> <input type ='text' value='".$edit_lastname."' readonly></br>";
 			        echo "<label>Birthday:</label> <input type ='text' value='".$edit_birthday."' readonly></br>";
 			        echo "<label>Age:</label> <input type ='text' value='".$edit_age."' readonly></br>";
@@ -325,7 +329,11 @@
 		         		echo "<td>".$row3[0]."</td>";
 		         		echo "<td>".$row3[1]."</td>";
 		         		echo "<td>".$row3[2]."</td>";
+<<<<<<< HEAD
 		         		echo "<td>".$row3[3]."</td>";
+=======
+		         		echo "<td>".$row3[3]."<i class='icon-edit'></i></td>";
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 		         		echo "</tr>";
             		}
             		

@@ -17,7 +17,11 @@
 	<link rel="stylesheet" href="css/home_index(User).css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+<<<<<<< HEAD
 <link rel="stylesheet" href="css/datepicker.css">
+=======
+
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 	<meta charset= 'utf-8'>
 	<title>SEES</title>
 	</head>
@@ -85,7 +89,11 @@
 								<label for="lastname">Lastname</label>
 								<input type="text"  name="lastname" <br/>
 								<label for="birthday">Birthday</label>
+<<<<<<< HEAD
 								<input type="text" name = "birthday" class= 'datepicker' ><br/>
+=======
+								<input type="text" name = "birthday" class= 'bday' ><br/>
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 								<label for="age">Age</label>
 								<input type="text" name="age" ><br/>
 								<label for="gender">Gender</label>
@@ -143,6 +151,10 @@
 						 <li id='student_info_li' class='active'><a href="#student_info" data-toggle="tab">Student Info</a></li>
 						 <li id='parent_info_li'><a href="#parent_info" data-toggle="tab">Guardian Info</a></li>
 						 <li id='student_sched_li'><a href="#student_schedule" data-toggle="tab">Schedule</a></li>
+<<<<<<< HEAD
+=======
+						 <li id='student_progress_li'><a href="#student_progress" data-toggle="tab">Progress</a></li>
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 					 </ul>
 					 <div class='tab-content'>
 						 <div id='student_info' class="active tab-pane">
@@ -163,6 +175,12 @@
 						 		</tr>
 						 	</table>
 						 </div><!---STUDENT SCHEDULE--->
+<<<<<<< HEAD
+=======
+						 <div id='student_progress' class="tab-pane">
+						 	
+						 </div><!---STUDENT_pROGRESS--->
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 						
 					</div><!--tab-content-->
 					<input type='hidden' name ='student_id_for_view'/>
@@ -202,7 +220,11 @@
 									<label for="guardian">Name</label>
 									<input type="text" name="guardian" title="Must be letter A-Z."><br/>
 									<label for="guardian_bday">Birthday</label>
+<<<<<<< HEAD
 									<input type="text" name = "guardian_bday" class="datepicker"><br/>
+=======
+									<input type="text" name = "guardian_bday" ><br/>
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 									<label for="guardian_age">Age</label>
 									<input type="text" name="guardian_age" title="Must be number"><br/>
 						
@@ -243,7 +265,11 @@
 											<label for="edit_guardian">Name</label>
 											<input type="text" name="edit_guardian" title="Must be letter A-Z."><br/>
 											<label for="edit_guardian_bday">Birthday</label>
+<<<<<<< HEAD
 											<input type="text"  class="datepicker" name="edit_guardian_bday"><br/>
+=======
+											<input type="text"  class = 'bday' name="edit_guardian_bday"><br/>
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 											<label for="edit_guardian_age">Age</label>
 											<input type="text" name="edit_guardian_age" title="Must be number"><br/>
 							
@@ -286,7 +312,11 @@
 								<label for="edit_lastname">Lastname</label>
 								<input type="text"  name="edit_lastname" title="Must be letter A-Z."><br/>
 								<label for="edit_birthday">Birthday</label>
+<<<<<<< HEAD
 								<input type="text"  class = 'datepicker' name="edit_birthday" title="yyyy-mm-dd"><br/>
+=======
+								<input type="text"  class= 'bday' name="edit_birthday" title="yyyy-mm-dd"><br/>
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 								<label for="edit_age">Age</label>
 								<input type="text" name="edit_age"  title="Must be number."><br/>
 								<label for="edit_gender">Gender</label>
@@ -343,7 +373,11 @@
 							<ul class="nav nav-tabs" id='teacher_tabs'>
 							 
 							 <li ><a href="#teacher_basic_info" data-toggle="tab">Basic Information</a></li>
+<<<<<<< HEAD
 							 <li id ="teacher_sched_li"><a href="#teacher_sched" data-toggle="tab">Class Schedule</a></li>
+=======
+							 <li ><a href="#teacher_sched" data-toggle="tab">Class Schedule</a></li>
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 						 </ul>
 						 <div class='tab-content'>
 						 	<div id="teacher_basic_info" class="active tab-pane">
@@ -351,7 +385,11 @@
 						 	</div><!--teacher_basic_info-->
 						 	<div id="teacher_sched" class="tab-pane">
 						 		
+<<<<<<< HEAD
 						 		<table id="teacher_sched_table" class="table table-striped hoover">
+=======
+						 		<table class="table table-hoover">
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 						 			<tr>
 						 				<th>Section</th>
 						 				<th>Subject</th>
@@ -361,9 +399,14 @@
 						 		</table>
 						 		
 						 	</div><!---teacher_sched--->
+<<<<<<< HEAD
 						 	
 						 </div><!-----tab-content------>
 						 <input type ="hidden" name ="teacher_id" />
+=======
+						 	<input type ="hidden" name ="teacher_id" />
+						 </div><!-----tab-content------>
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 						</div>
 						<div class="modal-footer">
 							<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -385,7 +428,11 @@
 											<label for="edit_teacher">Name</label>
 											<input type="text" name="edit_teacher" title="Must be letter A-Z."><br/>
 											<label for="edit_teacher_bday">Birthday</label>
+<<<<<<< HEAD
 											<input type="text"  class = 'datepicker' name="edit_teacher_bday"><br/>
+=======
+											<input type="text"  class = 'bday' name="edit_teacher_bday"><br/>
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 											<label for="edit_teacher_age">Age</label>
 											<input type="text" name="edit_teacher_age" title="Must be number"><br/>
 							
@@ -465,10 +512,17 @@
 		<script src="js/jquery-1.8.2.min.js"></script>
 		<script src="js/jquery-ui-1.10.1.custom.js"></script>
 		<script src = "js/jquery-ui-1.10.1.custom.min.js"></script>
+<<<<<<< HEAD
 		<script src = "js/bootstrap-datepicker.js"></script>
 		<script src = "js/bootstrap.min.js"></script>
 		<script src="js/home_index.js"></script>
 		<script src="js/Teacher(User).js"></script>	
+=======
+		<script src = "js/bootstrap.min.js"></script>
+		<script src="js/home_index.js"></script>
+		<script src="js/Teacher(User).js"></script>
+		<script src="js/log_in_preview.js"></script>
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 		<script src="js/Menu.js"></script>
 		<script src="js/Subject.js"></script>
 		</script src="js/Admin.js"></script>

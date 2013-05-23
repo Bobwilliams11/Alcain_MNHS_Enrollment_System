@@ -181,7 +181,11 @@
             		echo "<tr><th class = 'alert alert-error'> Subject List</th>
             		</tr>";
             		while($row = $view_subject->fetch()){
+<<<<<<< HEAD
             			echo "<tr  onclick='subject_view_data(".$row[0].")' data-toggle='modal' href='#subject_modal'>";
+=======
+            			echo "<tr id = ".$row[0].">";
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
             			echo "<td>".$row[1]."</td>";
             			echo "</tr>";
             		}
@@ -212,6 +216,7 @@
             
             }
             
+<<<<<<< HEAD
             function teachers_to_subject_view($subject_id){
             	$this->openConn();
             			$stmt= $this->dbh->prepare("SELECT t.Teacher_Name from Teachers_Table as t, Subject_of_Teachers as st
@@ -228,6 +233,8 @@
             	$this->closeConn();
             }
             
+=======
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
      }
 
 		    

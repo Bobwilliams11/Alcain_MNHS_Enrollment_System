@@ -1,11 +1,23 @@
 $(function(){
 //alert('dfsdfsf');
+<<<<<<< HEAD
 	//for datepicker
 	 $('.datepicker').datepicker({
 			  format: 'yyyy-mm-dd'
 		});
 	 //getting age
 	 //student_birthday
+=======
+	
+	//for datepicker
+	$( ".bday" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      dateFormat:'yy-mm-dd',
+   	 maxDate: "0M +0D "
+    });
+	 //getting age
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 	 $("input[name='birthday']").change(function(){
 	 	var birthday= $("input[name='birthday']").val();
 	 	var bdate= new Date(birthday);
@@ -13,6 +25,7 @@ $(function(){
 	 	var byear=bdate.getFullYear();
 	 	var thisyear=dateToday.getFullYear();
 	 	var age=thisyear-byear;
+<<<<<<< HEAD
 	 
 	 	$("input[name ='age']").val(age);
 	 	});
@@ -61,6 +74,11 @@ $(function(){
 		 	$("input[name ='edit_guardian_age']").val(age);
 	 	});
 	 	
+=======
+	 	
+	 	$("input[name ='age']").val(age);
+	 	});
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 	//tooltip for guardian form
 	    var tooltips = $( "[title]" ).tooltip();
 	
@@ -194,7 +212,11 @@ $(function(){
 			}
 		});
 	});
+<<<<<<< HEAD
 	//view student sched
+=======
+	
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 	$.ajax({
 		type:"POST",
 		url:"student_view_sched.php",
@@ -273,6 +295,10 @@ var saveObj={
 								 "edit_religion":$("input[name='edit_religion']").val(),
 								 "edit_contact":$("input[name='edit_contact']").val()
 							};
+<<<<<<< HEAD
+=======
+						
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 							$.ajax({	
 									type:"POST",
 									url:"student_save.php",
@@ -280,7 +306,11 @@ var saveObj={
 									success: function(data){
 										    //$(document.getElementById(saveObj)).html(data);
 										    $("#student_info").html(data);
+<<<<<<< HEAD
 										  
+=======
+										   alert( "Successfully Edited" );
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 										    //$(document.location.reload(true));
 									 },
 									 error: function(data){
@@ -388,7 +418,11 @@ var saveObj={
 									success: function(data){
 									
 											$("#parent_info").html(data);
+<<<<<<< HEAD
 										
+=======
+											alert("Successfully Edited");
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 									 },
 									 error: function(data){
 									 	alert("Error in savisng file.."+ JSON.stringify(data));

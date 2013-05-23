@@ -14,8 +14,13 @@
 	<head>
 	
 	<link rel = "stylesheet" href = "css/jquery-ui-1.10.1.custom.min.css"/>
+<<<<<<< HEAD
 	<link rel="stylesheet" href="css/Admin.css">
 	<link rel="stylesheet" href="css/datepicker.css">
+=======
+	
+	<link rel="stylesheet" href="css/Admin.css">
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/bootstrap.css">
@@ -92,8 +97,13 @@
 								<input type="text" name="middlename" ><br/>	
 								<label for="lastname">Lastname</label>
 								<input type="text"  name="lastname" <br/>
+<<<<<<< HEAD
 								<label for="birthday" >Birthday</label>
 								<input type="text" name = "birthday" class= 'datepicker' ><br/>
+=======
+								<label for="birthday">Birthday</label>
+								<input type="text" name = "birthday" class= 'bday' ><br/>
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 								<label for="age">Age</label>
 								<input type="text" name="age" ><br/>
 								<label for="gender">Gender</label>
@@ -180,7 +190,11 @@
 				<input type='hidden' name ='student_id2'>
 			</div>
 			  <div class="modal-footer">
+<<<<<<< HEAD
 			
+=======
+			  		<button class="btn btn-warning" data-toggle="modal" href="#drop_student_modal">Drop</button>
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 				 	<button type="button" data-dismiss="modal" class="btn btn-info" >Close</button>
 				</div>
 			</div><!---student_profile_modal-->
@@ -199,7 +213,11 @@
 									<label for="edit_middlename">Middlename</label>
 									<input type="text" name="edit_middlename" title="Must be letter A-Z."><br/>	
 									<label for="edit_lastname">Lastname</label>
+<<<<<<< HEAD
 									<input type="text"  name="edit_lastname" class="datepicker" title="Must be letter A-Z."><br/>
+=======
+									<input type="text"  name="edit_lastname" title="Must be letter A-Z."><br/>
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 									<label for="edit_birthday">Birthday</label>
 									<input type="text" id="dp1">
 									<label for="edit_age">Age</label>
@@ -236,7 +254,11 @@
 										<label for="guardian">Name</label>
 										<input type="text" name="guardian" title="Must be letter A-Z."><br/>
 										<label for="guardian_bday">Birthday</label>
+<<<<<<< HEAD
 										<input type="text" name = "guardian_bday" class="datepicker"><br/>
+=======
+										<input type="text" name = "guardian_bday" ><br/>
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 										<label for="guardian_age">Age</label>
 										<input type="text" name="guardian_age" title="Must be number"><br/>
 						
@@ -274,10 +296,18 @@
 										<div id="input">
 											<label for="edit_guardian">Name</label>
 											<input type="text" name="edit_guardian" title="Must be letter A-Z."><br/>
+<<<<<<< HEAD
 											<label for="edit_guardian_bday" class="datepicker">Birthday</label>
 											<input type="text"  class = 'datepicker' name="edit_guardian_bday"><br/>
 											<label for="edit_guardian_age">Age</label>
 											<input type="text" name="edit_guardian_age" title="Must be number"><br/>
+=======
+											<label for="edit_guardian_bday">Birthday</label>
+											<input type="text"  class = 'bday' name="edit_guardian_bday"><br/>
+											<label for="edit_guardian_age">Age</label>
+											<input type="text" name="edit_guardian_age" title="Must be number"><br/>
+							
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 											<label for="edit_guardian_work">Occupation</label>
 											<input type="text" name="edit_guardian_work" title="Must be letter A-Z."><br/>
 											<label for="edit_guardian_contact">Contact</label>
@@ -311,7 +341,11 @@
 										<label for='teacher_name'>Name</label>
 										<input type="text" name="teacher_name">
 										<label for="teacher_bday">Birthday</label>
+<<<<<<< HEAD
 										<input type="text" name = "teacher_bday" class="datepicker" ><br/>
+=======
+										<input type="text" name = "teacher_bday" class= 'bday' ><br/>
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 										<label for="teacher_age">Age</label>
 										<input type="text" name="teacher_age" ><br/>
 										<label for="teacher_address">Address</label>
@@ -399,7 +433,11 @@
 												<label for="edit_teacher">Name</label>
 												<input type="text" name="edit_teacher" title="Must be letter A-Z."><br/>
 												<label for="edit_teacher_bday">Birthday</label>
+<<<<<<< HEAD
 												<input type="text"  class="datepicker" name="edit_teacher_bday"><br/>
+=======
+												<input type="text"  class = 'bday' name="edit_teacher_bday"><br/>
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 												<label for="edit_teacher_age">Age</label>
 												<input type="text" name="edit_teacher_age" title="Must be number"><br/>
 												<label for="edit_teacher_address">Address</label>
@@ -495,7 +533,11 @@
 					<label for = "construct_company">Construction Company</label>
 					<input type = "text" name ="construct_company"  />
 					<label for = "constructed">Date Constructed</label>
+<<<<<<< HEAD
 					<input type = "text" name ="constructed"  class="datepicker"/>
+=======
+					<input type = "text" name ="constructed"  />
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 					<label for = "cost">Cost</label>
 					<input type = "text" name ="cost" />
 				</form>
@@ -522,6 +564,7 @@
 			
 	
 			</div><!----register_div--->
+<<<<<<< HEAD
 			
 			<!------------------about subject----------------------------->
 			<div id="subject_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
@@ -537,6 +580,8 @@
 						<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
 				  </div><!---modal-footer-->
 		</div><!--myModal--->
+=======
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 	</div><!--body_container-->
 		
 		 <div id="logout_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
@@ -592,9 +637,14 @@
 		
 		<script src="js/jquery-1.8.2.min.js"></script>
 		<script src = "js/jquery-ui-1.10.1.custom.min.js"></script>
+<<<<<<< HEAD
 		<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
 		<script src = "js/bootstrap.min.js"></script>
 		<script src = "js/bootstrap-datepicker.js"></script>
+=======
+		
+		<script src = "js/bootstrap.min.js"></script>
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 		<script src="js/Teacher(Admin).js"></script>
 		<script src="js/Menu(Admin).js"></script>
 		<script src="js/Subject.js"></script>
