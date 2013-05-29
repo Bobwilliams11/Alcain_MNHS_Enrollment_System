@@ -59,7 +59,11 @@ $(function(){
 									$('#add_teacher_sched_modal').modal('hide');	
 						},
 						error:function(data){
+<<<<<<< HEAD
 									console.log("error in showing teacher sched" +JSON.stringify(data));
+=======
+									console.log(JSON.stringify(data));
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 					 }
 			});
 				
@@ -70,9 +74,11 @@ $(function(){
 
 
 });//end of document onload
+<<<<<<< HEAD
 function subject_view_data(subject_id){
 		var subject_id = $("input[name='subject_id']").val(subject_id);
 	
+<<<<<<< HEAD
 		$.ajax({
 			type:"POST", 
 			url:"teachers_to_subject.php",
@@ -100,5 +106,33 @@ function subject_view_data(subject_id){
 			}
 			
 		});
+=======
+=======
+
+function selectTeacher(){
+	
+	var selected_teacher = $("select[name='teacher']").val();
+	var teacher_name= $("#teacher_choice").val(selected_teacher);
+	
+	var teacher ={"teacher_choice": $("#teacher_choice").val()};
+	
+	console.log(JSON.stringify(teacher));
+	
+	
+
+	$.ajax({
+		type:"POST",
+		url:"get_teachers_subject.php",
+		data:teacher,
+		success:function(data){
+			
+			$("#for_subject").html(data);
+		},
+		error:function(data){
+			console.log(JSON.stringify(data));
+		}
+	});
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
+>>>>>>> eaf7e4cb2b301f0347a82020b5577ea1db915538
 }
 

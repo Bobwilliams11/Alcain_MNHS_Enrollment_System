@@ -38,6 +38,7 @@ $(document).ready(function(){
 		}
 	});
 	
+<<<<<<< HEAD
 	//viewing teacher sched
 	$("#teacher_sched_li").click(function(){
 		
@@ -57,6 +58,12 @@ $(document).ready(function(){
 
 	
 
+=======
+	
+
+
+
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 });//end of document on load
 
 

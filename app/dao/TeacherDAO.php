@@ -350,6 +350,7 @@
 
             }
             
+<<<<<<< HEAD
             function view_teacher_sched($teacher_id, $user_now){
             	$this->openConn();
             		$check_user = $this->dbh->prepare("SELECT * FROM Admin WHERE Admin_Username = ?");
@@ -458,5 +459,99 @@
             }
             
            
+=======
+            function view_teacher_sched($teacher_id){
+            	$this->openConn();
+            	
+            		$stmt = $this->dbh->prepare("SELECT st.teacher_id, r.Room, s.Subject_Name, st.Day, st.Time 
+            			FROM Subject_of_Teachers as st, Subject as s, Room_Table as r
+            			WHERE st.room_id = r.room_id
+            			AND st.subject_id = s.subject
+            			AND st.teacher_id =?");
+            		$stmt->bindParam(1, $teacher_id);
+            		$stmt->execute();
+            		
+              			echo "<tr>";
+            			echo "<th>Room</th>";
+            			echo "<th>Subject</th>";
+            			echo "<th>Day</th>";
+            			echo "<th>Time</th>";
+            			echo "<th>Edit / Delete</th>";
+            			
+            			echo "</tr>";
+            		while ($row= $stmt->fetch()){
+
+            			echo "<tr id =".$row[0].">";
+		         		echo "<td>".$row[1]."</td>";
+		         		echo "<td>".$row[2]."</td>";
+		         		echo "<td>".$row[3]."</td>";
+		         		echo "<td>".$row[4]."</td>";
+		         		echo "<td><span class='label label-warning'>Edit</span>   |
+		         		<span class='label label-warning'>Delete</span></td>";
+		         		echo "</tr>";
+            		}
+            		
+            		
+            	$this->closeConn();
+            }
+            
+            
+          /* 
+           
+           function teacher_delete($id){
+                  $this->openConn();
+                  $stmt = $this->dbh->prepare("DELETE FROM Teachers_Table WHERE teacher_id=?");
+                  $stmt->bindParam(1, $id);
+                  $stmt->execute();
+                  
+                  echo "Deleted Permanently";
+                  $this->closeConn();
+            
+            }
+            
+           
+           
+		
+	          
+	      
+           function teacher_search($search_teacher){
+                  $this->openConn();
+                  
+                  $stmt= $this->dbh->prepare("SELECT * FROM Teacher_Profile WHERE Lastname LIKE '".$search_teacher."%'");
+                  $stmt->execute();
+                  
+                  $searched = false;
+			         while($row=$stmt->fetch()){
+				                $ctr=0;
+				                while($ctr<2){
+					                  if($row[$ctr] != "" || $row[$ctr] != ""){
+						                  $searched = true;
+					                  }
+					                  $ctr++;
+				                  }
+				                  if($searched){
+					                echo "<tr id=".$row[0].">";
+									echo "<td><img src='css/images/user-icon.png'/></td>";
+									echo "<td>".$row[1]."</td>";
+									echo "<td>".$row[2]."</td>";
+									echo "<td>".$row[3]."</td>";
+									echo "<td>".$row[4]."</td>";
+									echo "<td>".$row[5]."</td>";
+									echo "<td>".$row[6]."</td>";
+									echo "<td><button class='btn btn-success' onclick='student_edit(".$row[0].")'>Edit</button></td>";
+								  	echo "<td><button class='btn btn-success' onclick='student_delete(".$row[0].")'>Delete</button></td>";
+									echo "</tr>"; 	
+				                  }
+			         }
+			         if(!$searched){
+			                     echo"<script> alert('No Files Found'); </script>";
+			         }					
+			         $this->closeConn();
+             
+            }   
+           
+
+		*/
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 	}
 ?>

@@ -181,7 +181,15 @@
             		echo "<tr><th class = 'alert alert-error'> Subject List</th>
             		</tr>";
             		while($row = $view_subject->fetch()){
+<<<<<<< HEAD
 				       echo "<tr  onclick='subject_view_data(".$row[0].")' data-toggle='modal' href='#subject_modal'>";
+=======
+<<<<<<< HEAD
+            			echo "<tr  onclick='subject_view_data(".$row[0].")' data-toggle='modal' href='#subject_modal'>";
+=======
+            			echo "<tr id = ".$row[0].">";
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
+>>>>>>> eaf7e4cb2b301f0347a82020b5577ea1db915538
             			echo "<td>".$row[1]."</td>";
             			echo "</tr>";
             		}
@@ -212,6 +220,7 @@
             
             }
             
+<<<<<<< HEAD
             function teachers_to_subject_view($subject_id){
             	$this->openConn();
             			$stmt= $this->dbh->prepare("SELECT  DISTINCT t.teacher_id ,t.Teacher_Name from Teachers_Table as t, Subject_of_Teachers as st
@@ -233,6 +242,7 @@
             	$this->closeConn();
             }
             
+<<<<<<< HEAD
             function get_subject_name($subject_id){
             	$this->openConn();
             			$subject= $this->dbh->prepare("SELECT Subject_Name FROM Subject WHERE subject=?");
@@ -247,6 +257,10 @@
             	
             }
             
+=======
+=======
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
+>>>>>>> eaf7e4cb2b301f0347a82020b5577ea1db915538
      }
 
 		    

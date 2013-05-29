@@ -1,5 +1,6 @@
 $(function(){
 	//for datepicker
+<<<<<<< HEAD
 		 $('.datepicker').datepicker({
 			  format: 'yyyy-mm-dd'
 		});
@@ -55,16 +56,40 @@ $(function(){
 		 	var birthday= $("input[name='edit_guardian_bday']").val();
 		 	var bdate= new Date(birthday);
 		 	var dateToday=new Date();
+=======
+/*	$( ".bday" ).datepicker({
+		   changeMonth: true,
+		   changeYear: true,
+		   dateFormat:'yy-mm-dd',
+			 maxDate: "0M +0D "
+		 });*/
+		 //getting age
+		 $("input[name='birthday']").change(function(){
+		 	var birthday= $("input[name='birthday']").val();
+		 	var bdate= new Date(birthday);
+		 	var dateToday=new Date();;
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 		 	var byear=bdate.getFullYear();
 		 	var thisyear=dateToday.getFullYear();
 		 	var age=thisyear-byear;
 		 	
+<<<<<<< HEAD
 		 	$("input[name ='edit_guardian_age']").val(age);
 	 });
 	
 	//tooltip for guardian form
 	    var tooltips = $( "[title]" ).tooltip();
 	    
+=======
+		 	$("input[name ='age']").val(age);
+	});
+	//student_ edit_datepicker
+	$('#dp1').datepicker({
+	  format: 'yyyy-mm-dd'
+	});
+	
+	
+>>>>>>> 898af78d12fecc6b7bf4b96d3e3ad6f6a3593678
 	//viewing all students
 	$.ajax({
 		type:"GET",
