@@ -396,6 +396,7 @@
 										
 										$user = $user_check->fetch();
 										if($user[0] == $teacher_id){
+										
 											$stmt = $this->dbh->prepare("SELECT st.teacher_id, r.Room, s.Subject_Name, st.Day, st.Time 
 												FROM Subject_of_Teachers as st, Subject as s, Room_Table as r
 												WHERE st.room_id = r.room_id

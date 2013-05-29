@@ -85,7 +85,7 @@ $(function(){
 						var lastname = $("input[name='lastname']").val();
 						var birthday = $("input[name='birthday']").val();
 						var age = $("input[name='age']").val();
-						var gender = $("input[name='gender']").val();
+						var gender = $("select[name='gender']").val();
 						var contact = $("input[name='contact']").val();
 						
 						var regint = /^[0-9]+/;
@@ -128,7 +128,7 @@ $(function(){
 									"lastname":$("input[name='lastname']").val(),
 									"birthday":$("input[name='birthday']").val(),
 									"age":$("input[name='age']").val(),
-									"gender":$("input[name='gender']").val(),
+									"gender":$("select[name='gender']").val(),
 									"address":$("input[name='address']").val(),
 									"religion":$("input[name='religion']").val(),
 									"contact":$("input[name='contact']").val(),
@@ -316,7 +316,7 @@ function guardian_add(){
 								url:"guardian_add.php",
 								success: function(data){
 									
-									$("#parent_info").append(data);
+									$("#parent_info").html(data);
 									
 								},
 								error: function(data){

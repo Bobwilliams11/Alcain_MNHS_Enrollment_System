@@ -135,9 +135,10 @@ body {
 }
 
 /*div*/
-.modal-body {
-    max-height: 100%;
+#student_profile_modal .modal-body {
+    max-height: 600px;
 }
+
 #add_panel2{
 	width:550px
 	margin:auto;
@@ -200,7 +201,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7deed', end
 	color:black;
 	font-size:25px;
 }
-#login{
+#login, #error_mess, #edit_error_mess, #error_mess2{
 	display:none;
 }
 select{
@@ -366,6 +367,10 @@ label {
 	float:right;
 	margin-right:300px;
 	margin-top:50px;
+}
+#subject_table{
+	margin-left:50px;
+	width:50px;
 }
 #teachers_table{
 	margin:auto;

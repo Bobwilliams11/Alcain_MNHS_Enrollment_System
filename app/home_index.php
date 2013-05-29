@@ -89,7 +89,10 @@
 								<label for="age">Age</label>
 								<input type="text" name="age" ><br/>
 								<label for="gender">Gender</label>
-								<input type="text" name="gender" ><br/>
+								<select name="gender" >
+									<option value ="Female"> Female</option>
+									<option value= "Male">Male</option>
+								</select><br/>
 								<label for="address">Address</label>
 								<input type="text" name="address" ><br/>
 								<label for="religion">Religion</label>
@@ -107,7 +110,8 @@
 				<br/>
 				<br/>
 					
-				<table id='view_students_table' class="table table-striped dataTable">
+				<table id='view_students_table' <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
+
 					<tr><th class='thead' colspan='6'>Student List 
 					</th>
 						
@@ -129,7 +133,7 @@
 						<li><a href="#">Next</a></li>
 					</ul>
 				</div><!---pagination--->
-				
+			 
 					
 			</div><!--add_student-->
 			
@@ -168,7 +172,6 @@
 					<input type='hidden' name ='student_id_for_view'/>
 			</div>
 			  <div class="modal-footer">
-			  	<button class="btn btn-warning" data-toggle="modal" href="#drop_student_modal">Drop</button>
 				 <button type="button" data-dismiss="modal" class="btn btn-info" >Close</button>
 				 </div>
 			</div><!---student_profile_modal-->
@@ -471,6 +474,5 @@
 		<script src="js/Teacher(User).js"></script>	
 		<script src="js/Menu.js"></script>
 		<script src="js/Subject.js"></script>
-		</script src="js/Admin.js"></script>
 	</body>
 </html>

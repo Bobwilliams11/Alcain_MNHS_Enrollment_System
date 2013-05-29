@@ -76,7 +76,7 @@
             			$sched_check ->execute();
             			
             			if($sched_check->fetch()){
-								echo "Already Scheduled...";            			
+								echo "<script>alert('Already Scheduled...')</script>";            			
             			}
             			else{
             				$time_check = $this->dbh->prepare("SELECT * FROM Subject_of_Teachers
@@ -86,7 +86,7 @@
             				$time_check->fetch();
             				
             				if($time_check->fetch()){
-            					echo "Already Scheduled..";
+									echo "<script>alert('Already Scheduled...')</script>";            			
             				}else{
             					$stmt3 = $this->dbh->prepare("INSERT INTO Subject_of_Teachers (teacher_id,subject_id, room_id, Day, Time) VALUES (?,?,?,?,?)");
 						   		$stmt3->bindParam(1, $teacher_id);
@@ -139,10 +139,10 @@
             		if($room_check->fetch()){
 							echo "".$room." Already Exist";
 						}else{
- 	          			$stmt =$this->dbh->prepare("INSERT INTO Room_Table VALUES (?,?,?,?)  ");
+ 	          			$stmt =$this->dbh->prepare("INSERT INTO Room_Table (Room, Year_Constructed, Construction_Company, Construction_Cost) VALUES (?,?,?,?)  ");
 		         		$stmt->bindParam(1, $room);
-		         		$stmt->bindParam(2, $company);
-		         		$stmt->bindParam(3, $constructed);
+		         		$stmt->bindParam(2, $constructed);
+		         		$stmt->bindParam(3, $company);
 		         		$stmt->bindParam(4, $cost);
 		         		$stmt->execute();
 		         		
@@ -181,7 +181,7 @@
             		echo "<tr><th class = 'alert alert-error'> Subject List</th>
             		</tr>";
             		while($row = $view_subject->fetch()){
-            			echo "<tr  onclick='subject_view_data(".$row[0].")' data-toggle='modal' href='#subject_modal'>";
+				       echo "<tr  onclick='subject_view_data(".$row[0].")' data-toggle='modal' href='#subject_modal'>";
             			echo "<td>".$row[1]."</td>";
             			echo "</tr>";
             		}
@@ -214,18 +214,37 @@
             
             function teachers_to_subject_view($subject_id){
             	$this->openConn();
-            			$stmt= $this->dbh->prepare("SELECT t.Teacher_Name from Teachers_Table as t, Subject_of_Teachers as st
+            			$stmt= $this->dbh->prepare("SELECT  DISTINCT t.teacher_id ,t.Teacher_Name from Teachers_Table as t, Subject_of_Teachers as st
 								where t.teacher_id = st.teacher_id
 								and st.subject_id = ?");
 							$stmt->bindParam(1, $subject_id);
 							$stmt->execute();
 							
-							while($row = $stmt->fetch()){
+							$found = false;
+						while($row = $stmt->fetch()){
 								echo "<tr id =".$row[0].">";
 								echo "<td>".$row[1]."</td>";
 								echo "</tr>";
+								$found = true;
+							}
+							if (!$found){
+								echo "<tr><td class='alert alert-error'>No Teacher Handle This Subject</td></tr>";
 							}
             	$this->closeConn();
+            }
+            
+            function get_subject_name($subject_id){
+            	$this->openConn();
+            			$subject= $this->dbh->prepare("SELECT Subject_Name FROM Subject WHERE subject=?");
+            			$subject->bindParam(1, $subject_id);
+            			$subject->execute();
+            			
+            			while($row = $subject ->fetch()){
+            				echo $row[0];
+            			
+            			}
+            	$this->closeConn();	
+            	
             }
             
      }

@@ -13,7 +13,9 @@ $(function(){
 	 	var thisyear=dateToday.getFullYear();
 	 	var age=thisyear-byear;
 	 
-	 	$("input[name ='age']").val(age);
+	 age= $("input[name ='age']").val(age);
+	 	 
+
 	 });
 	 	//edit student_birthday
 	 $("input[name='edit_birthday']").change(function(){
@@ -76,6 +78,7 @@ $(function(){
 		}
 
 	});
+	//adding student
 	$("#add_panel_btn").click(function(){
 		$("#students_form").dialog( 'open' );
 		
@@ -87,50 +90,71 @@ $(function(){
 		show:"clip",
 		hide:"clip",
 		width:500,
-		height:700,
 		buttons:{
 			"Add":function(){
 						var firstname = $("input[name='firstname']").val();
 						var middlename = $("input[name='middlename']").val();
 						var lastname = $("input[name='lastname']").val();
-						var birthday = $("input[name='birthday']").val();
 						var age = $("input[name='age']").val();
 						var gender = $("input[name='gender']").val();
 						var contact = $("input[name='contact']").val();
-						
+						var address= $("input[name='address']").val();
+						var religion = $("input[name='religion']").val();
+						var age = $("input[name = 'age']").val();
 						var regint = /^[0-9]+/;
 						var regexString = /^[a-zA-Z]+/;
 
 						if(!regexString.test(firstname)){
-								$('#student_status').html("Invalid Firstname ").effect("highlight", 2000).fadeOut(1000);
-								$("#student_status").css({"font-size":"20px","font-weight":"bold", "color":"blue"});
+								
+								$("input[name = 'firstname']").css({"border":"1px solid red"});
+								$("input[name = 'firstname']").focus();
+								$("#error_mess").html("Invalid Firstname");
+								$("#error_mess").show();
 								return false;
 						}
 						else if(!regexString.test(middlename)){
-								$('#student_status').html("Invalid Middlename").effect("highlight", 2000).fadeOut(1000);
-								$("#student_status").css({"font-size":"20px","font-weight":"bold", "color":"blue"});
+								$("input[name = 'middlename']").focus();
+								$("input[name = 'middlename']").css({"border":"1px solid red"});
+								$("#error_mess").html("Invalid Middlename");
+								$("#error_mess").show();
 								return false;
 						}
 						else if (!regexString.test(lastname)){
-								$('#student_status').html("Invalid Lastname").effect("highlight", 2000).fadeOut(1000);
-								$("#student_status").css({"font-size":"20px","font-weight":"bold", "color":"blue"});
+								$("input[name = 'lastname']").focus();
+								$("input[name = 'lastname']").css({"border":"1px solid red"});
+								$("#error_mess").html("Invalid Lastname");
+								$("#error_mess").show();
 								return false;
 						}
-						else if(regexString.test(birthday)){
-								$('#student_status').html("Invalid birthday (yyyy-mm-dd)").effect("highlight", 2000).fadeOut(1000);
-								$("#student_status").css({"font-size":"20px","font-weight":"bold", "color":"blue"});
+						else if((regexString.test(age)) || (age <= 10)){
+								$("input[name = 'age']").focus();
+								$("input[name = 'age']").css({"border":"1px solid red"});
+								$("#error_mess").html("Invalid Age");
+								$("#error_mess").show();
 								return false;
 						}
-						else if(regexString.test(age)){
-								$('#student_status').html("Invalid Age").effect("highlight", 2000).fadeOut(1000);
-								$("#student_status").css({"font-size":"20px","font-weight":"bold", "color":"blue"});
+						else if(address == ""){
+								$("input[name = 'address']").focus();
+								$("input[name = 'address']").css({"border":"1px solid red"});
+								$("#error_mess").html(" Address Need To Be Set");
+								$("#error_mess").show();
 								return false;
 						}
-						else if(!regint.test(contact)){
-								$('#student_status').html("Invalid Contact").effect("highlight", 2000).fadeOut(1000);
-								$("#student_status").css({"font-size":"20px","font-weight":"bold", "color":"blue"});
+						else if(regint.test(religion) || religion == ""){
+								$("input[name = 'religion']").focus();
+								$("input[name = 'religion']").css({"border":"1px solid red"});
+								$("#error_mess").html("Invalid Religion");
+								$("#error_mess").show();
 								return false;
 						}
+						else if(!regint.test(contact) || contact == ""){
+								$("input[name = 'contact']").focus();
+								$("input[name = 'contact']").css({"border":"1px solid red"});
+								$("#error_mess").html("Invalid Contact");
+								$("#error_mess").show();
+								return false;
+						}
+						
 						else{
 								var addObj={
 									"firstname":$("input[name='firstname']").val(),
@@ -145,7 +169,6 @@ $(function(){
 									"teacher":$("select[name='teacher']").val()
 									
 								};
-								
 								$.ajax({
 										type:"POST",
 										url:"student_add(Admin).php",
@@ -153,6 +176,7 @@ $(function(){
 										success:function(data){
 											
 											$("#view_students_table").append(data);
+											console.log(data);
 																						
 										},
 										error:function(data){
@@ -162,7 +186,7 @@ $(function(){
 						
 							}
 							
-				//$(this).dialog( 'close' );
+				$(this).dialog( 'close' );
 				},
 				Cancel:function(){
 					$( this ).dialog("close");
@@ -303,7 +327,7 @@ $(function(){
 								 "constructed":$("input[name ='constructed']").val(),
 								 "cost":$("input[name ='cost']").val()
 						};
-					
+				
 					if (roomObj.room == "" || roomObj.construct_company == "" || roomObj.constructed == "" || roomObj.cost == ""){
 						alert("Fill Up all Fields");
 					}else{
@@ -318,6 +342,7 @@ $(function(){
 								console.log(JSON.stringify(data));
 							}
 						});
+						$( this ).dialog('close');
 					}
 				},
 				Cancel:function(){
@@ -360,6 +385,28 @@ $(function(){
 				}
 			}
 		});
+		
+		//view student sched
+		$("student_sched_li").click(function(){
+		
+			var student_id = $("input[name='student_id_for_view']").val();
+				
+			$.ajax({
+				type:"POST",
+				data:student_id,
+				url:"student_view_sched.php",
+				success:function(data){
+					$("#student_sched_table").append(data);
+		
+				},
+				alert:function(data){
+					console.log(JSON.stringify(data));
+				}
+			});
+		});
+		
+	
+	
 		
 });//end of document on load
 
@@ -413,37 +460,102 @@ function student_edit(edit_id){
 
 }///end of student_edit function
 function student_save(){
+	
+						var firstname = $("input[name='edit_firstname']").val();
+						var middlename = $("input[name='edit_middlename']").val();
+						var lastname = $("input[name='edit_lastname']").val();
+						var age = $("input[name='edit_age']").val();
+						var gender = $("input[name='edit_gender']").val();
+						var contact = $("input[name='edit_contact']").val();
+						var address= $("input[name='edit_address']").val();
+						var religion = $("input[name='edit_religion']").val();
+						var age = $("input[name = 'edit_age']").val();
+						var regint = /^[0-9]+/;
+						var regexString = /^[a-zA-Z]+/;
 
-var saveObj={
-								 "edit_id":$("input[name='edit_id']").val(),
-								 "edit_firstname":$("input[name='edit_firstname']").val(),
-								 "edit_middlename":$("input[name='edit_middlename']").val(),
-								 "edit_lastname":$("input[name='edit_lastname']").val(),
-								 "edit_birthday":$("input[name='edit_birthday']").val(),
-								 "edit_age":$("input[name='edit_age']").val(),
-								 "edit_gender":$("input[name='edit_gender']").val(),
-								 "edit_address":$("input[name='edit_address']").val(),
-								 "edit_religion":$("input[name='edit_religion']").val(),
-								 "edit_contact":$("input[name='edit_contact']").val()
-							};
+						if(!regexString.test(firstname)){
+								
+								$("input[name = 'edit_firstname']").css({"border":"1px solid red"});
+								$("input[name = 'edit_firstname']").focus();
+								$("#edit_error_mess").html("Invalid Firstname");
+								$("#edit_error_mess").show();
+								return false;
+						}
+						else if(!regexString.test(middlename)){
+								$("input[name = 'edit_middlename']").focus();
+								$("input[name = 'edit_middlename']").css({"border":"1px solid red"});
+								$("#edit_error_mess").html("Invalid Middlename");
+								$("#edit_error_mess").show();
+								return false;
+						}
+						else if (!regexString.test(lastname)){
+								$("input[name = 'edit_lastname']").focus();
+								$("input[name = 'edit_lastname']").css({"border":"1px solid red"});
+								$("#edit_error_mess").html("Invalid Lastname");
+								$("#edit_error_mess").show();
+								return false;
+						}
+						else if((regexString.test(age)) || (age <= 10)){
+								$("input[name = 'edit_age']").focus();
+								$("input[name = 'edit_age']").css({"border":"1px solid red"});
+								$("#edit_error_mess").html("Invalid Age");
+								$("#edit_error_mess").show();
+								return false;
+						}
+						else if(address == ""){
+								$("input[name = 'edit_address']").focus();
+								$("input[name = 'edit_address']").css({"border":"1px solid red"});
+								$("#edit_error_mess").html(" Address Need To Be Set");
+								$("#edit_error_mess").show();
+								return false;
+						}
+						else if(regint.test(religion) || religion == ""){
+								$("input[name = 'edit_religion']").focus();
+								$("input[name = 'edit_religion']").css({"border":"1px solid red"});
+								$("#edit_error_mess").html("Invalid Religion");
+								$("#edit_error_mess").show();
+								return false;
+						}
+						else if(!regint.test(contact) || contact == ""){
+								$("input[name = 'edit_contact']").focus();
+								$("input[name = 'edit_contact']").css({"border":"1px solid red"});
+								$("#edit_error_mess").html("Invalid Contact");
+								$("#edit_error_mess").show();
+								return false;
+						}
+						else{
+							var saveObj={
+									 "edit_id":$("input[name='edit_id']").val(),
+									 "edit_firstname":$("input[name='edit_firstname']").val(),
+									 "edit_middlename":$("input[name='edit_middlename']").val(),
+									 "edit_lastname":$("input[name='edit_lastname']").val(),
+									 "edit_birthday":$("input[name='edit_birthday']").val(),
+									 "edit_age":$("input[name='edit_age']").val(),
+									 "edit_gender":$("input[name='edit_gender']").val(),
+									 "edit_address":$("input[name='edit_address']").val(),
+									 "edit_religion":$("input[name='edit_religion']").val(),
+									 "edit_contact":$("input[name='edit_contact']").val()
+								};
 						
-							$.ajax({	
-									type:"POST",
-									url:"student_save.php",
-									data:saveObj,
-									success: function(data){
-										    //$(document.getElementById(saveObj)).html(data);
-										    $("#student_info").html(data);
-										  
-									 },
-									 error: function(data){
-									 	alert("Error in savisng file.."+ JSON.stringify(data));
-									 }
-	});	
+								$.ajax({	
+										type:"POST",
+										url:"student_save.php",
+										data:saveObj,
+										success: function(data){
+												 //$(document.getElementById(saveObj)).html(data);
+												 $("#student_info").html(data);
+											  
+										 },
+										 error: function(data){
+										 	alert("Error in savisng file.."+ JSON.stringify(data));
+										 }
+							});
+					}	
+		$('#edit_student_modal').modal('hide');
 }
 
 function guardian_add(){
-
+				
 			        var addguardianObj={
 								 "guardian":$("input[name='guardian']").val(),
 								 "guardian_bday":$("input[name='guardian_bday']").val(),
@@ -466,8 +578,8 @@ function guardian_add(){
 								data:addguardianObj,
 								url:"guardian_add.php",
 								success: function(data){
-									alert(JSON.stringify(data));
-									$("#parent_info").append(data);
+									//alert(JSON.stringify(data));
+									$("#parent_info").html(data);
 								},
 								error: function(data){
 									
@@ -476,6 +588,8 @@ function guardian_add(){
 
 
 							});
+							
+					$("#guardian_modal").modal("hide");
 				
 }//end of guardian_add function
 
@@ -536,11 +650,19 @@ var saveObj={
 									success: function(data){
 									
 											$("#parent_info").html(data);
-											alert("Successfully Edited");
+											
 									 },
 									 error: function(data){
 									 	alert("Error in savisng file.."+ JSON.stringify(data));
 									 }
 							});	
+							$('#edit_guardian_modal').modal('hide');
 }
 
+function selectTeacher(teacher_id){
+	
+	var teacher = $("select[name = 'teacher']").val();
+
+			
+		
+}

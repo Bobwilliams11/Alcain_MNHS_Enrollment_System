@@ -2,7 +2,6 @@
   //for menu
 	$("#add_student").hide();
 	$("#register").hide();
-	$("#subject_div").hide();
 	$("#teacher_div").hide();
 	$("#add_student_link").click(function(){
 		$("#add_student").show();

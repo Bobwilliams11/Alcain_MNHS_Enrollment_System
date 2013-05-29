@@ -43,7 +43,7 @@
 							echo "<label >Address:</label> <input type ='text' value = '".$guardian_address."' readonly>";
 							echo "<label >Religion:</label> <input type ='text' value = '".$guardian_religion."' readonly>";
 							echo "<label >Relationship:</label> <input type ='text' value = '".$guardian_rship."' readonly>";
-
+							echo "<button class='btn btn-primary' data-toggle='modal' href='#edit_guardian_modal' onclick='guardian_edit(".$guardian_id.")'>Edit Guardian</button>";
 				          
 				            
 					        $stmt2 = $this->dbh->prepare("INSERT INTO Student_and_Parent (student_id, guardian_id) VALUES (?,?)"); 
@@ -51,7 +51,7 @@
 		             		$stmt2->bindParam(2, $guardian_id);
 					        $stmt2->execute();
 				
-				        echo "<script>alert('Successfully Added...')</script>";
+				       // echo "<script>alert('Successfully Added...')</script>";
 		     	        
 		     	        
 

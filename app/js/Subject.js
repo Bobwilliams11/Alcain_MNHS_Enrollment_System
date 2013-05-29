@@ -48,44 +48,57 @@ $(function(){
 						"day_to_teach":$("input[name='day_to_teach']").val(),
 						"time_to_teach":$("input[name='time_to_teach']").val()
 				};
-				alert(JSON.stringify(addSchedObj));
+			//	alert(JSON.stringify(addSchedObj));
 				$.ajax({
 						type:"POST",
 						url:"add_teacher_sched.php",
 						data:addSchedObj,
 						success:function(data){
-								$("#teacher_sched_table").html(data);
+								$("#teacher_sched_table").append(data);
 									console.log(JSON.stringify(data));
+									$('#add_teacher_sched_modal').modal('hide');	
 						},
 						error:function(data){
 									console.log("error in showing teacher sched" +JSON.stringify(data));
 					 }
 			});
-			
-				$('#add_teacher_sched').modal('hide');
+				
 		});
 		
-		
+	
+	
+
 
 });//end of document onload
 function subject_view_data(subject_id){
-	//var subject_id = $("input[name='subject_id']").val(subject_id);
-
-	var subject_id = $("input[name ='subject_id']").val(subject_id);
-	var subjectObj={"subject_id":subject_id};
+		var subject_id = $("input[name='subject_id']").val(subject_id);
 	
-
-	$.ajax({
-		type:"GET",
-		data:subjectObj,
-		url:"teachers_to_subject.php",
-		success:function(data){
-			$("#teachers_to_subject_tbl").append(data);
-			//alert(JSON.stringify(data));
-		},
-		error:function(data){
-			console.log("error in view teachers to subject"+ JSON.stringify(data));
-		}
-	});
-	
+		$.ajax({
+			type:"POST", 
+			url:"teachers_to_subject.php",
+			data:subject_id, 
+			success:function(data){
+				$("#subject_table").html(data);
+				console.log(data);
+			},
+			error:function(data){
+				console.log(JSON.stringify(data));
+			}
+		});
+		
+		$.ajax({
+			type:"POST", 
+			url:"subject_get_name.php",
+			data:subject_id, 
+			success:function(data){
+			
+				$("#subject_header").html(data);
+				console.log(data);
+			},
+			error:function(data){
+				alert(data);
+			}
+			
+		});
 }
+

@@ -5,7 +5,7 @@
 	if (isset($_POST['subject_id'])){
 		$subject_id = $_POST['subject_id'];
 		$action = new SubjectDAO();
-		$action->teachers_to_subject_view($subject_id);
+		$action->get_subject_name($subject_id);
 		
 		
 	}

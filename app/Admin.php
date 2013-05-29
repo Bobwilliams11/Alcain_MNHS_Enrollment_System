@@ -83,11 +83,12 @@
 			<div id="add_student">
 				<div id ="add_panel" class="alert alert-success" >
 					<form id="students_form" method="POST" action ="student_add.php">
-							<p id="student_status"></p>
+						<p class	="alert alert-error" id="error_mess" ></p>
 							<fieldset>
 								<legend>Student Profile</legend>
 								<label for='firstname'>Name</label>
-								<input type="text" name="firstname">
+								<input type="text" name="firstname" >
+									
 								<label for="middlename">Middlename</label>
 								<input type="text" name="middlename" ><br/>	
 								<label for="lastname">Lastname</label>
@@ -95,7 +96,7 @@
 								<label for="birthday" >Birthday</label>
 								<input type="text" name = "birthday" class= 'datepicker' ><br/>
 								<label for="age">Age</label>
-								<input type="text" name="age" ><br/>
+								<input type="text" name="age" readonly><br/>
 								<label for="gender">Gender</label>
 								<select name="gender" >
 									<option value ="Female">Female</option>
@@ -114,6 +115,7 @@
 								</fieldset>
 						</form><!--form_add_student-->
 						<button  id="add_panel_btn" class="btn btn-success">ADD STUDENT</button>
+						
 				</div><!---add_panel--->
 				<br/>
 				<br/>
@@ -164,7 +166,7 @@
 						 </div><!---PARENT_INFO---->
 						 <div id='student_schedule' class="tab-pane">
 						 	
-						 	<table class="table table-bordered table-hoover">
+						 	<table id = "student_sched_table" class="table table-bordered table-hoover">
 						 		<tr>
 						 			<th>Subject</th>
 						 			<th>Subject Teacher</th>
@@ -175,9 +177,8 @@
 							
 						 </div><!---STUDENT SCHEDULE--->
 						 
-						 <input type="hidden" name ="student_id_for_view"/>
+						 <input type="text" name ="student_id_for_view"/>
 					</div><!--tab-content-->
-				<input type='hidden' name ='student_id2'>
 			</div>
 			  <div class="modal-footer">
 			
@@ -192,33 +193,34 @@
 						 <h3>Edit Here!!</h3>
 					  </div>
 					  <div class="modal-body">
-							<form id ="edit_student_form" method = "POST" action = "student_save.php" class="">
+							<form id ="edit_student_form" method = "POST" action = "student_save.php">
+							<p class	="alert alert-error" id="edit_error_mess" ></p>
 								<fiedlset>
 									<label for='edit_firstname'>Name</label>
-									<input type="text" name="edit_firstname" title="Must be letter A-Z.">
+									<input type="text" name="edit_firstname" >
 									<label for="edit_middlename">Middlename</label>
-									<input type="text" name="edit_middlename" title="Must be letter A-Z."><br/>	
+									<input type="text" name="edit_middlename" ><br/>	
 									<label for="edit_lastname">Lastname</label>
-									<input type="text"  name="edit_lastname" class="datepicker" title="Must be letter A-Z."><br/>
+									<input type="text"  name="edit_lastname" ><br/>
 									<label for="edit_birthday">Birthday</label>
-									<input type="text" id="dp1">
+									<input type="text" class="datepicker" name="edit_birthday" >
 									<label for="edit_age">Age</label>
-									<input type="text" name="edit_age"  title="Must be number."><br/>
+									<input type="text" name="edit_age" readonly><br/>
 									<label for="edit_gender">Gender</label>
-									<input type="text" name="edit_gender" title="Must be letter."><br/>
+									<input type="text" name="edit_gender" ><br/>
 									<label for="edit_address">Address</label>
-									<input type="text" name="edit_address" title="Can be letter and number."><br/>
+									<input type="text" name="edit_address"><br/>
 									<label for="edit_religion">Religion</label>
-									<input type="text" name="edit_religion" title="Must be letter A-Z."><br/>
+									<input type="text" name="edit_religion" ><br/>
 									<label for="edit_contact">Contact </label>
-									<input type="text" name="edit_contact" title="Must be number 0-9."><br/>
+									<input type="text" name="edit_contact" ><br/>
 								
 									<input type="hidden" name="edit_id" ><br/>
 								</fieldset>
 							</form><!--edit_student_form--->
 					  </div>
 					  <div class="modal-footer">
-						 <button type="button" data-dismiss="modal" class="btn btn-primary">Cancel</button>
+						 <button type="button" data-dismiss="modal" class="btn ">Cancel</button>
 						 <button type="button" class="btn btn-primary" id="save_student_btn" onclick='student_save()'>Save</button>
 					  </div>
 				</div><!--edit student_modal--->
@@ -226,30 +228,31 @@
 				<div id="guardian_modal" class="modal hide fade" tabindex="-1" data-focus-on="input:first" data-backdrop="static">
 				  <div class="modal-header">
 					 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-					 <h3>Add Guardian Information</h3>
+						<h3> Add Guardian</h3>
 				  </div>
 				  <div class="modal-body">
 						<form id="add_guardian_form" metho="POST" action = "guardian_add.php">
+							 <p id ="error_mess2" class="alert alert-error" ></p>
 								<fieldset>
 									<p><span>Guardian</span></p>
 									<div id="input">
 										<label for="guardian">Name</label>
-										<input type="text" name="guardian" title="Must be letter A-Z."><br/>
+										<input type="text" name="guardian" ><br/>
 										<label for="guardian_bday">Birthday</label>
 										<input type="text" name = "guardian_bday" class="datepicker"><br/>
 										<label for="guardian_age">Age</label>
-										<input type="text" name="guardian_age" title="Must be number"><br/>
+										<input type="text" name="guardian_age" readonly><br/>
 						
 										<label for="guardian_work">Occupation</label>
-										<input type="text" name="guardian_work" title="Must be letter A-Z."><br/>
+										<input type="text" name="guardian_work" ><br/>
 										<label for="guardian_contact">Contact</label>
-										<input type="text" name="guardian_contact" title="Must be number."><br/>
+										<input type="text" name="guardian_contact" ><br/>
 										<label for="guardian_address">Address</label>
-										<input type="text" name="guardian_address" title="Must be letter A-Z."><br/>
+										<input type="text" name="guardian_address"><br/>
 										<label for="guardian_religion">Religion</label>
-										<input type="text" name="guardian_religion" title="Must be letter A-Z."><br/>
+										<input type="text" name="guardian_religion" ><br/>
 										<label for="guardian_rship">Relationship to the Student</label>
-										<input type="text" name="guardian_rship" title="Must be letter A-Z."><br/>
+										<input type="text" name="guardian_rship"><br/>
 										<input type="hidden" name="guardian_id"><br/>
 									</div>
 							</fieldset>
@@ -271,33 +274,35 @@
 						<form id="edit_guardian" metho="POST" action = "guardian_save.php" >
 								<fieldset>
 									<p><span>Guardian</span></p>
-										<div id="input">
-											<label for="edit_guardian">Name</label>
-											<input type="text" name="edit_guardian" title="Must be letter A-Z."><br/>
-											<label for="edit_guardian_bday" class="datepicker">Birthday</label>
-											<input type="text"  class = 'datepicker' name="edit_guardian_bday"><br/>
-											<label for="edit_guardian_age">Age</label>
-											<input type="text" name="edit_guardian_age" title="Must be number"><br/>
-											<label for="edit_guardian_work">Occupation</label>
-											<input type="text" name="edit_guardian_work" title="Must be letter A-Z."><br/>
-											<label for="edit_guardian_contact">Contact</label>
-											<input type="text" name="edit_guardian_contact" title="Must be number."><br/>
-											<label for="edit_guardian_address">Address</label>
-											<input type="text" name="edit_guardian_address" title="Must be letter A-Z."><br/>
-											<label for="edit_guardian_religion">Religion</label>
-											<input type="text" name="edit_guardian_religion" title="Must be letter A-Z."><br/>
-											<label for="edit_guardian_rship">Relationship to the Student</label>
-											<input type="text" name="edit_guardian_rship" title="Must be letter A-Z."><br/>
-											<input type="hidden" name="edit_guardian_id"><br/>
-											<input type="hidden" name="edit_student_id" ><br/>
-										</div>
+										<label for="edit_guardian">Name</label>
+										<input type="text" name="edit_guardian" ><br/>
+										<label for="edit_guardian_bday">Birthday</label>
+										<input type="text" name = "edit_guardian_bday" class="datepicker"><br/>
+										<label for="edit_guardian_age">Age</label>
+										<input type="text" name="edit_guardian_age" readonly><br/>
+						
+										<label for="edit_guardian_work">Occupation</label>
+										<input type="text" name="edit_guardian_work" ><br/>
+										<label for="edit_guardian_contact">Contact</label>
+										<input type="text" name="edit_guardian_contact" ><br/>
+										<label for="edit_guardian_address">Address</label>
+										<input type="text" name="edit_guardian_address"><br/>
+										<label for="edit_guardian_religion">Religion</label>
+										<input type="text" name="edit_guardian_religion" ><br/>
+										<label for="edit_guardian_rship">Relationship to the Student</label>
+										<input type="text" name="edit_guardian_rship"><br/>
+										<input type="hidden" name="guardian_id"><br/>
+										<input type="hidden" name="edit_guardian_id"><br/>
+										<input type="hidden" name="edit_student_id" ><br/>
+											
+										
 							</fieldset>
 						</form><!--edit_guardian_form-->
 			
 					  </div>
 					  <div class="modal-footer">
-						 <button type="button" data-dismiss="modal" class="btn btn-primary">Cancel</button>
-						 <button type="button" class="btn " id="edit_guardian_btn" onclick='guardian_save()'>Save</button>
+						 <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+						 <button type="button" class="btn  btn-primary" id="edit_guardian_btn" onclick='guardian_save()'>Save</button>
 					  </div>
 					</div><!--edit_guardian_modal--->
 					
@@ -524,19 +529,29 @@
 			</div><!----register_div--->
 			
 			<!------------------about subject----------------------------->
-			<div id="subject_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
-				  <div id='subject_modal' class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						
-				  </div><!---modal-header--->
-				  <div class="modal-body">
-				  	<input type="hidden" name ="subject_id" />
-				 
-				  </div>
-				  <div class="modal-footer">
-						<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-				  </div><!---modal-footer-->
-		</div><!--myModal--->
+	
+				  
+
+				  <div id="subject_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					  <div class="modal-header">
+						 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						 <h3 id="myModalLabel" ><p id="subject_header" class="alert alert-success"></p></h3>
+					  </div>
+					  <div class="modal-body">
+									  <div id="subject_div">
+									  		<input type="hidden" name ="subject_id" />
+									 		
+									 		<table id="subject_table" class="table table-striped hoover">
+									 			<tr><th>Subject</th></tr>
+									 		</table>
+									  </div>
+					  </div>
+					  <div class="modal-footer">
+						 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+					  </div>
+				</div><!--subject_modal-->
+				  
+		
 	</div><!--body_container-->
 		
 		 <div id="logout_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
@@ -591,10 +606,10 @@
 		
 		
 		<script src="js/jquery-1.8.2.min.js"></script>
+		<script src="js/jquery-ui-1.10.1.custom.js"></script>
 		<script src = "js/jquery-ui-1.10.1.custom.min.js"></script>
-		<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
-		<script src = "js/bootstrap.min.js"></script>
 		<script src = "js/bootstrap-datepicker.js"></script>
+		<script src = "js/bootstrap.min.js"></script>
 		<script src="js/Teacher(Admin).js"></script>
 		<script src="js/Menu(Admin).js"></script>
 		<script src="js/Subject.js"></script>

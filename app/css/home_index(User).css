@@ -135,6 +135,10 @@ body {
 }
 
 /*div*/
+#student_profile_modal .modal-body {
+    max-height: 600px;
+}
+
 #add_student , #student_parent_wrap{
 	background-color:#F0F8FF;
 	width:850px;

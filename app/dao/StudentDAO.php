@@ -38,29 +38,43 @@
 	                    		
 	                    		$teacher_id = $row[1];
 	                    		
-	                    		$stmt = $this->dbh->prepare("INSERT INTO Students_Profile(teacher_id, Firstname, Middlename, Lastname, Birthday, Age,Gender, Address,Religion,Contact) 
-				          		values (?,?,?,?,?,?,?,?,?,?)");
-				          		$stmt->bindParam(1, $teacher_id);
-									$stmt->bindParam(2, $firstname);
-									$stmt->bindParam(3, $middlename);
-									$stmt->bindParam(4, $lastname);
-									$stmt->bindParam(5, $birthday);
-									$stmt->bindParam(6, $age);
-									$stmt->bindParam(7, $gender);
-									$stmt->bindParam(8, $address);
-									$stmt->bindParam(9, $religion);
-									$stmt->bindParam(10, $contact);
-		                     $stmt->execute();
-									$student_id = $this->dbh->lastInsertId();
+	                    		$student_pop = $this->dbh->prepare("SELECT COUNT(*) FROM Students_Profile WHERE teacher_id = ?");
+	                    		$student_pop->bindParam(1, $teacher_id );
+	                    		$student_pop->execute();
+	                    		$students= $student_pop->fetch();
+	                    		
+	                    		$student_max=30;
+	                    		if ($students[0] > $student_max){
+	                    			echo "<script> alert('No space for new student')</script>";
+	                    			return false;
+	                    		
+	                    		}else{
+	                    		
+			                 		$stmt = $this->dbh->prepare("INSERT INTO Students_Profile(teacher_id, Firstname, Middlename, Lastname, Birthday, Age,Gender, Address,Religion,Contact) 
+						       		values (?,?,?,?,?,?,?,?,?,?)");
+						       		$stmt->bindParam(1, $teacher_id);
+										$stmt->bindParam(2, $firstname);
+										$stmt->bindParam(3, $middlename);
+										$stmt->bindParam(4, $lastname);
+										$stmt->bindParam(5, $birthday);
+										$stmt->bindParam(6, $age);
+										$stmt->bindParam(7, $gender);
+										$stmt->bindParam(8, $address);
+										$stmt->bindParam(9, $religion);
+										$stmt->bindParam(10, $contact);
+				                  $stmt->execute();
+										$student_id = $this->dbh->lastInsertId();
 
-									echo "<tr>";
-									echo "<td>".$firstname."</td>";
-									echo "<td>".$middlename."</td>";
-									echo "<td>".$lastname."</td>";
-									echo "</tr>";
-									echo "<script>alert('".$firstname."  " .$lastname." Successfully Added...')</script>";
-	                    }		 
-	                    		 
+										echo "<tr>";
+										echo "<td>".$firstname."</td>";
+										echo "<td>".$middlename."</td>";
+										echo "<td>".$lastname."</td>";
+										echo "</tr>";
+										echo "<script>alert('".$firstname."  " .$lastname." Successfully Added...')</script>";
+			                 }		 
+
+	                    }
+	                    			                    		 
 							  
 						}		  
 				$this->closeConn();
@@ -93,7 +107,7 @@
 							$student_check ->execute();
 							
 							if ($row = $student_check ->fetch()){
-									echo "Student Already Exist";
+                            echo "<script>alert('Student Already Exist...')</script>";
 									return false;
 							}
 							else{
@@ -118,6 +132,8 @@
 								echo "<td>".$middlename."</td>";
 								echo "<td>".$lastname."</td>";
 								echo"</tr>";
+								
+								echo "<script>Successfully ADDED</script>";
 							}
 						
 						
@@ -304,7 +320,7 @@
             		$row1= $stmt->fetch();
             		$teacher_id = $row1[1];
             		
-            		$get_room = $this->dbh->prepare("SELECT * FROM Teachers_Room_Position wHERE teacher_id= ?");
+            		$get_room = $this->dbh->prepare("SELECT * FROM Teachers_Room_Position WHERE teacher_id= ?");
             		$get_room->bindParam(1, $teacher_id);
             		$get_room->execute();
             		
@@ -332,7 +348,7 @@
             	$this->closeConn();
 		}
 		
-		function student_view_sched_admin($teacher_name){
+		function student_view_sched_admin(){
 				$this->openConn();
             	
             		$stmt = $this->dbh->prepare("SELECT * FROM Registered_User WHERE Username = ? ");
@@ -369,6 +385,8 @@
             		
             	$this->closeConn();
 		}
+		
+		
 }
 
 
